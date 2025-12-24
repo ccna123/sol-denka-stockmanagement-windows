@@ -29,10 +29,9 @@ namespace sol_denka_stockmanagement.Views.Controls.SelectionListControl
 
         private void SelectList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (SelectList.SelectedItem is ListBoxItem item)
+            if (SelectList.SelectedItem is ListBoxItem item && item.Tag is string key)
             {
-                string selected = item.Content.ToString();
-                MenuSelected?.Invoke(this, selected);
+                MenuSelected?.Invoke(this, key);
             }
         }
     }
