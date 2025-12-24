@@ -1,0 +1,47 @@
+﻿<UserControl x:Class="sol_denka_stockmanagement.Views.Controls.SelectionListControl.SelectionListControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:sol_denka_stockmanagement.Views.Controls.SelectionListControl"
+             mc:Ignorable="d" 
+             Background="#373E4C"
+             BorderThickness="0,0,1,0"
+             Foreground="White"
+             BorderBrush="Gray"
+             d:DesignHeight="450" d:DesignWidth="160">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.1*"/>
+            <RowDefinition Height="0.9*"/>
+        </Grid.RowDefinitions>
+        
+        <Grid Grid.Row="0">
+            <TextBlock
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center"
+                FontSize="20"
+                Text="副資材管理システム"/>
+        </Grid>
+        <Grid Grid.Row="1">
+            <ListBox Name="SelectList" Margin="20,10,0,0" HorizontalAlignment="Stretch" SelectionChanged="SelectList_SelectionChanged" FontSize="20" BorderBrush="Transparent" >
+                <ListBox.ItemContainerStyle>
+                    <Style TargetType="ListBoxItem">
+                        <Setter Property="Margin" Value="0,5,0,5"/>
+                        <Setter Property="Foreground" Value="White"/>
+                    </Style>
+                </ListBox.ItemContainerStyle>
+
+                <ListBoxItem Content="Home"/>
+                <ListBoxItem Content="資材台帳"/>
+                <ListBoxItem Content="在庫一覧"/>
+                <ListBoxItem Content="棚卸結果"/>
+                <ListBoxItem Content="CSV取込"/>
+                <ListBoxItem Content="CSV出力"/>
+                <ListBoxItem Content="USB連携"/>
+                <ListBoxItem Content="マスタ管理"/>
+                <ListBoxItem Content="設定"/>
+            </ListBox>
+        </Grid>
+    </Grid>
+</UserControl>

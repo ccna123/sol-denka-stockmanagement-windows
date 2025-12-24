@@ -1,0 +1,226 @@
+﻿<UserControl x:Class="sol_denka_stockmanagement.Views.Controls.UsbCooperationControl.UsbCooperationControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:sol_denka_stockmanagement.Views.Controls.UsbCooperationControl"
+             mc:Ignorable="d" 
+             Background="White"
+             d:DesignHeight="450" d:DesignWidth="640">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.1*"/>
+            <RowDefinition Height="0.9*"/>
+        </Grid.RowDefinitions>
+
+        <Border BorderBrush="Gray" BorderThickness="0,0,0,1">
+            <Grid Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="40,0,0,0">
+                <TextBlock 
+            Text="USB連携"
+            FontSize="20"/>
+            </Grid>
+        </Border>
+
+        <Grid Grid.Row="1">
+            <Grid Margin="20">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="60"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="60"/>
+                </Grid.RowDefinitions>
+
+                <!-- 上部タイトル枠 -->
+                <Border BorderThickness="1" BorderBrush="#C8C8C8" CornerRadius="4" Padding="10">
+                    <TextBlock Text="端末情報" 
+                       VerticalAlignment="Center" 
+                       HorizontalAlignment="Center"
+                       FontSize="20"/>
+                </Border>
+
+                <!-- タブ部分 -->
+                <TabControl Grid.Row="1" Margin="0,20,0,20" SelectionChanged="TabControl_SelectionChanged">
+                    <!-- ▼ ダウンロードタブ -->
+                    <TabItem Header="ダウンロード（Android → Windows）">
+                        <Grid Margin="20">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="auto"/>
+                            </Grid.RowDefinitions>
+                            <StackPanel Grid.Row="0">
+                                <!-- 転送方式 -->
+                                <TextBlock Text="転送方式の選択" FontSize="20" FontWeight="Bold" Margin="0,10"/>
+                                <StackPanel Margin="10,0">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="0.5*"/>
+                                            <ColumnDefinition Width="0.5*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <RadioButton x:Name="DownloadAutomatic" Margin="0,5" Grid.Column="0" Click="Automatic_Checked" IsChecked="True">
+                                            <StackPanel>
+                                                <TextBlock Text="自動転送" FontWeight="Bold" FontSize="20"/>
+                                                <TextBlock Text="未転送のCSVファイルを自動で転送します。" FontSize="12" TextWrapping="Wrap"/>
+                                            </StackPanel>
+                                        </RadioButton>
+
+                                        <RadioButton x:Name="DownloadManual" Margin="0,5" Grid.Column="1" Click="Manual_Checked">
+                                            <StackPanel>
+                                                <TextBlock Text="手動転送" FontSize="20" FontWeight="Bold"/>
+                                                <TextBlock Text="ファイルを手動で選択して転送します。" FontSize="12"/>
+                                            </StackPanel>
+                                        </RadioButton>
+                                    </Grid>
+                                </StackPanel>
+
+                                <!-- ファイル種別 -->
+                                <TextBlock Text="転送対象ファイル" FontSize="20" FontWeight="Bold" Margin="0,40,0,15"/>
+                                <ComboBox x:Name="FileTypeCombo" Width="200" SelectedIndex="0" HorizontalAlignment="Left" SelectionChanged="DownloadList_SelectionChanged">
+                                    <ComboBoxItem Content="入庫結果CSV"/>
+                                    <ComboBoxItem Content="出庫結果CSV"/>
+                                    <ComboBoxItem Content="棚卸結果CSV"/>
+                                    <ComboBoxItem Content="保管場所変更結果CSV"/>
+                                </ComboBox>
+                            </StackPanel>
+
+                            <ListView x:Name="FileListView" Grid.Row="1" Margin="0,20,0,0" SizeChanged="Downloadlist_SizeChanged" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                                <ListView.Resources>
+                                    <Style TargetType="{x:Type GridViewColumnHeader}">
+                                        <Setter Property="Background" Value="LightGray"/>
+                                        <!-- ヘッダー背景色 -->
+                                        <Setter Property="Foreground" Value="Black"/>
+                                        <!-- 文字色 -->
+                                        <Setter Property="FontWeight" Value="Bold"/>
+                                        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                                    </Style>
+                                </ListView.Resources>
+
+                                <ListView.View>
+                                    <GridView>
+                                        <GridViewColumn>
+                                            <GridViewColumn.HeaderTemplate>
+                                                <DataTemplate>
+                                                    <CheckBox Content="" 
+                                                        x:Name="HeaderCheckBox"
+                                                        IsChecked="{Binding IsSelected}"
+                                                        Visibility="{Binding DataContext.IsManualMode,
+                                                            RelativeSource={RelativeSource AncestorType=ListView},
+                                                            Converter={StaticResource BoolToVisibilityConverter}}"
+                                                        Click="HeaderCheckBox_Click"/>
+                                                </DataTemplate>
+                                            </GridViewColumn.HeaderTemplate>
+                                            <GridViewColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <CheckBox IsChecked="{Binding IsSelected}"
+                                                        Visibility="{Binding DataContext.IsManualMode,
+                                                            RelativeSource={RelativeSource AncestorType=ListView},
+                                                            Converter={StaticResource BoolToVisibilityConverter}}"/>
+                                                </DataTemplate>
+                                            </GridViewColumn.CellTemplate>
+                                        </GridViewColumn>
+                                        <GridViewColumn Header="ファイル名" DisplayMemberBinding="{Binding FileName}" Width="200"/>
+                                        <GridViewColumn Header="ファイル更新日時" DisplayMemberBinding="{Binding UpdateTime}" Width="120"/>
+                                        <GridViewColumn Header="連携ステータス" DisplayMemberBinding="{Binding Status}" Width="80"/>
+                                    </GridView>
+                                </ListView.View>
+                            </ListView>
+                        </Grid>
+                    </TabItem>
+
+                    <!-- ▼ アップロードタブ -->
+                    <TabItem Header="アップロード（Windows → Android）">
+                        <Grid Margin="20">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="auto"/>
+                            </Grid.RowDefinitions>
+                            <StackPanel Grid.Row="0">
+                                <!-- 転送方式 -->
+                                <TextBlock Text="転送方式の選択" FontSize="20" FontWeight="Bold" Margin="0,10"/>
+                                <StackPanel Margin="10,0">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="0.5*"/>
+                                            <ColumnDefinition Width="0.5*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <RadioButton x:Name="Automatic" Margin="0,5" Grid.Column="0" Click="Automatic_Checked" IsChecked="True">
+                                            <StackPanel>
+                                                <TextBlock Text="自動転送" FontWeight="Bold" FontSize="20"/>
+                                                <TextBlock Text="未転送のCSVファイルを自動で転送します。" FontSize="12" TextWrapping="Wrap"/>
+                                            </StackPanel>
+                                        </RadioButton>
+
+                                        <RadioButton x:Name="Manual" Margin="0,5" Grid.Column="1" Click="Manual_Checked">
+                                            <StackPanel>
+                                                <TextBlock Text="手動転送" FontSize="20" FontWeight="Bold"/>
+                                                <TextBlock Text="ファイルを手動で選択して転送します。" FontSize="12"/>
+                                            </StackPanel>
+                                        </RadioButton>
+                                    </Grid>
+                                </StackPanel>
+
+                                <!-- ファイル種別 -->
+                                <TextBlock Text="転送対象ファイル" FontSize="20" FontWeight="Bold" Margin="0,40,0,15"/>
+                                <ComboBox x:Name="FileTypeCombo2" Width="200" SelectedIndex="0" HorizontalAlignment="Left" SelectionChanged="UploadList_SelectionChanged">
+                                    <ComboBoxItem Content="品目マスタCSV"/>
+                                    <ComboBoxItem Content="品目フィールド設定マスタCSV"/>
+                                    <ComboBoxItem Content="保管場所マスタCSV"/>
+                                    <ComboBoxItem Content="タグマスタCSV"/>
+                                    <ComboBoxItem Content="台帳アイテムCSV"/>
+                                </ComboBox>
+                            </StackPanel>
+
+                            <ListView x:Name="FileListView2" Grid.Row="1" Margin="0,20,0,0" SizeChanged="uploadlist_SizeChanged" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                                <ListView.Resources>
+                                    <Style TargetType="{x:Type GridViewColumnHeader}">
+                                        <Setter Property="Background" Value="LightGray"/>
+                                        <!-- ヘッダー背景色 -->
+                                        <Setter Property="Foreground" Value="Black"/>
+                                        <!-- 文字色 -->
+                                        <Setter Property="FontWeight" Value="Bold"/>
+                                        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                                    </Style>
+                                </ListView.Resources>
+
+                                <ListView.View>
+                                    <GridView>
+                                        <GridViewColumn>
+                                            <GridViewColumn.HeaderTemplate>
+                                                <DataTemplate>
+                                                    <CheckBox Content="" 
+                                                        x:Name="HeaderCheckBox2"
+                                                        IsChecked="{Binding IsSelected}"
+                                                        Visibility="{Binding DataContext.IsManualMode,
+                                                            RelativeSource={RelativeSource AncestorType=ListView},
+                                                            Converter={StaticResource BoolToVisibilityConverter}}"
+                                                        Click="HeaderCheckBox2_Click"/>
+                                                </DataTemplate>
+                                            </GridViewColumn.HeaderTemplate>
+                                            <GridViewColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <CheckBox IsChecked="{Binding IsSelected}"
+                                                        Visibility="{Binding DataContext.IsManualMode,
+                                                            RelativeSource={RelativeSource AncestorType=ListView},
+                                                            Converter={StaticResource BoolToVisibilityConverter}}"/>
+                                                </DataTemplate>
+                                            </GridViewColumn.CellTemplate>
+                                        </GridViewColumn>
+                                        <GridViewColumn Header="ファイル名" DisplayMemberBinding="{Binding FileName}" Width="200"/>
+                                        <GridViewColumn Header="ファイル更新日時" DisplayMemberBinding="{Binding UpdateTime}" Width="120"/>
+                                        <GridViewColumn Header="連携ステータス" DisplayMemberBinding="{Binding Status}" Width="80"/>
+                                    </GridView>
+                                </ListView.View>
+                            </ListView>
+                        </Grid>
+                    </TabItem>
+                </TabControl>
+
+                <!-- 下部ボタン -->
+                <StackPanel Grid.Row="2" HorizontalAlignment="Right" VerticalAlignment="Center">
+                    <Button Content="転送実行" Width="120" Height="36"
+                    HorizontalAlignment="Right"
+                    Background="#F5F5F5" BorderBrush="#B0B0B0" Click="Check_button"/>
+                </StackPanel>
+            </Grid>
+        </Grid>
+    </Grid>
+</UserControl>

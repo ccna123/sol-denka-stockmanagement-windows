@@ -1,0 +1,62 @@
+﻿<Window x:Class="sol_denka_stockmanagement.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:sol_denka_stockmanagement"
+        xmlns:SelectList="clr-namespace:sol_denka_stockmanagement.Views.Controls.SelectionListControl"
+        xmlns:HomeScreen="clr-namespace:sol_denka_stockmanagement.Views.Controls.HomeScreenControl" 
+        xmlns:MaterialLedgerScreen="clr-namespace:sol_denka_stockmanagement.Views.Controls.MaterialLedgerScreenControl"
+        xmlns:StockListScreen="clr-namespace:sol_denka_stockmanagement.Views.Controls.StockListScreenControl"
+        xmlns:CsvImportScreen="clr-namespace:sol_denka_stockmanagement.Views.Controls.CsvImportScreenControl"
+        xmlns:CsvExportScreen="clr-namespace:sol_denka_stockmanagement.Views.Controls.CsvExportScreenControl"
+        xmlns:MasterManagementScreen="clr-namespace:sol_denka_stockmanagement.Views.Controls.MasterManagementScreenControl"
+        xmlns:SettingScreen="clr-namespace:sol_denka_stockmanagement.Views.Controls.SettingScreenControl"
+        xmlns:TagDetailsView="clr-namespace:sol_denka_stockmanagement.Views.Controls.MaterialLedgerScreenControl"
+        xmlns:TagDetailsEdit="clr-namespace:sol_denka_stockmanagement.Views.Controls.MaterialLedgerScreenControl"
+        xmlns:InventoryResult="clr-namespace:sol_denka_stockmanagement.Views.Controls.InventoryResultControl"
+        xmlns:UsbCooperation="clr-namespace:sol_denka_stockmanagement.Views.Controls.UsbCooperationControl"
+        xmlns:InventoryDetails="clr-namespace:sol_denka_stockmanagement.Views.Controls.InventoryResultControl"
+        xmlns:NewRegistration="clr-namespace:sol_denka_stockmanagement.Views.Controls.MasterManagementScreenControl"
+        xmlns:EditRegistration="clr-namespace:sol_denka_stockmanagement.Views.Controls.MasterManagementScreenControl"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:MaterialSearchDialog="clr-namespace:sol_denka_stockmanagement.Views.Dialogs"
+        mc:Ignorable="d"
+        WindowState="Maximized"
+        Title="MainWindow" Height="450" Width="800">
+
+    <materialDesign:DialogHost CloseOnClickAway="False" DialogTheme="Inherit" >
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.2*"/>
+                <ColumnDefinition Width="0.8*"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid Grid.Column="0">
+                <SelectList:SelectionListControl x:Name="SelectionListControl"/>
+            </Grid>
+
+            <Grid Grid.Column="1" x:Name="ContentArea">
+                <HomeScreen:HomeScreenControl x:Name="HomeScreenControl"/>
+                <MaterialLedgerScreen:MaterialLedgerScreenControl x:Name="MaterialLedgerScreenControl" Visibility="Collapsed"/>
+                <StockListScreen:StockListScreen x:Name="StockListScreenControl" Visibility="Collapsed"/>
+                <CsvImportScreen:CsvImportScreenControl x:Name="CsvImportScreenControl" Visibility="Collapsed"/>
+                <CsvExportScreen:CsvExportScreenControl x:Name="CsvExportScreenControl" Visibility="Collapsed"/>
+                <MasterManagementScreen:MasterManagementScreenControl x:Name="MasterMagamentScreenControl" Visibility="Collapsed"/>
+                <SettingScreen:SettingScreenControl x:Name="SettingScreenControl" Visibility="Collapsed"/>
+                <MaterialLedgerScreen:TagDetails_View x:Name="TagDetailsView" Visibility="Collapsed"/>
+                <MaterialLedgerScreen:TagDetails_Edit x:Name="TagDetailsEdit" Visibility="Collapsed"/>
+                <InventoryResult:InventoryResultControl x:Name="InventoryResult" Visibility="Collapsed"/>
+                <UsbCooperation:UsbCooperationControl x:Name="UsbCooperation" Visibility="Collapsed"/>
+                <InventoryDetails:InventoryDetails x:Name="InventoryDetail" Visibility="Collapsed"/>
+                <NewRegistration:NewRegistration x:Name="NewRegistration" Visibility="Collapsed"/>
+                <EditRegistration:EditRegistration x:Name="EditRegistration" Visibility="Collapsed"/>
+            </Grid>
+        </Grid>
+
+        <materialDesign:DialogHost.DialogContent>
+            <MaterialSearchDialog:MaterialSearchDialog/>
+        </materialDesign:DialogHost.DialogContent>
+
+    </materialDesign:DialogHost>
+</Window>
