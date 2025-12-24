@@ -19,49 +19,6 @@
             <Setter Property="BorderBrush" Value="#888"/>
             <Setter Property="BorderThickness" Value="1"/>
             <Setter Property="Cursor" Value="Hand"/>
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="Button">
-                        <Border CornerRadius="6"
-                                Background="{TemplateBinding Background}"
-                                BorderBrush="{TemplateBinding BorderBrush}"
-                                BorderThickness="{TemplateBinding BorderThickness}">
-                            <ContentPresenter HorizontalAlignment="Center"
-                                              VerticalAlignment="Center"/>
-                        </Border>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-
-            <Style.Triggers>
-                <!-- マウスオーバー -->
-                <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="Background" Value="#D0E8FF"/>
-                </Trigger>
-            </Style.Triggers>
-        </Style>
-
-        <Style x:Key="ButtonStyle" TargetType="Button">
-            <Setter Property="Width" Value="110"/>
-            <Setter Property="Height" Value="30"/>
-            <Setter Property="Margin" Value="4"/>
-            <Setter Property="FontSize" Value="14"/>
-            <Setter Property="Background" Value="White"/>
-            <Setter Property="BorderBrush" Value="#888"/>
-            <Setter Property="BorderThickness" Value="1"/>
-            <Setter Property="Cursor" Value="Hand"/>
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="Button">
-                        <Border CornerRadius="6"
-                                Background="{TemplateBinding Background}"
-                                BorderBrush="{TemplateBinding BorderBrush}"
-                                BorderThickness="{TemplateBinding BorderThickness}">
-                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                        </Border>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
 
             <Style.Triggers>
                 <!-- マウスオーバー -->
@@ -137,20 +94,8 @@
                     HorizontalAlignment="Left"
                     VerticalAlignment="Stretch"
                     Padding="10,5"
-                    Click="OpenSearchDialogButton_Click">
-                    <Button.Template>
-                        <ControlTemplate TargetType="Button">
-                            <Border 
-                                Background="{TemplateBinding Background}" 
-                                BorderBrush="{TemplateBinding BorderBrush}" 
-                                BorderThickness="{TemplateBinding BorderThickness}" 
-                                CornerRadius="5">
-                                <ContentPresenter 
-                                    HorizontalAlignment="Center" 
-                                    VerticalAlignment="Center" />
-                            </Border>
-                        </ControlTemplate>
-                    </Button.Template>
+                        Style="{StaticResource PrimaryButtonStyle}"
+                        Click="OpenSearchDialogButton_Click">
                 </Button>
 
                 <StackPanel Orientation="Horizontal" Margin="10">

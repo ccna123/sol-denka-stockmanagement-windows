@@ -208,8 +208,6 @@ namespace sol_denka_stockmanagement.Views.Controls.StockListScreenControl
         {
             LoadDataFromDb();
 
-            Style btnStyle = (Style)FindResource("ButtonStyle");
-            SearchButton.Style = btnStyle;
 
             _pageSize = 20;
             _currentPage = 1;

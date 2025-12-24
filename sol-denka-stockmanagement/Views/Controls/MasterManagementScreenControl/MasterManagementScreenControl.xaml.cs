@@ -62,7 +62,7 @@ namespace sol_denka_stockmanagement.Views.Controls.MasterManagementScreenControl
                     LoadItems();
                     listView.ItemsSource = ItemList;
                     RegistrationButton.IsEnabled = true;
-                    RegistrationButton.Background = new SolidColorBrush(System.Windows.Media.Colors.White);
+                    //RegistrationButton.Background = new SolidColorBrush(System.Windows.Media.Colors.White);
                     break;
 
                 case "保管場所マスタ":
@@ -73,7 +73,7 @@ namespace sol_denka_stockmanagement.Views.Controls.MasterManagementScreenControl
                     LoadLocations();
                     listView.ItemsSource = StorageList;
                     RegistrationButton.IsEnabled = true;
-                    RegistrationButton.Background = new SolidColorBrush(System.Windows.Media.Colors.White);
+                    //RegistrationButton.Background = new SolidColorBrush(System.Windows.Media.Colors.White);
                     break;
 
                 case "タグマスタ":
@@ -83,8 +83,8 @@ namespace sol_denka_stockmanagement.Views.Controls.MasterManagementScreenControl
                     AddDetailButtonColumn(gv);
                     LoadTags();
                     listView.ItemsSource = TagList;
-                    RegistrationButton.IsEnabled = false;
-                    RegistrationButton.Background = new SolidColorBrush(System.Windows.Media.Colors.LightGray);
+                    RegistrationButton.IsEnabled = true;
+                    //RegistrationButton.Background = new SolidColorBrush(System.Windows.Media.Colors.LightGray);
                     break;
                 default:
                     listView.Visibility = Visibility.Collapsed;

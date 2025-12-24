@@ -46,7 +46,10 @@
                     <RowDefinition Height="0.5*"/>
                 </Grid.RowDefinitions>
                 <TextBlock Grid.Row="0" Text="マスタ選択" FontSize="20" FontWeight="Bold"/>
-                <Button x:Name="RegistrationButton" Content="新規登録" Background="White" Width="90" Grid.Row="0" HorizontalAlignment="Right" Click="Registration_Click"/>
+                <Button x:Name="RegistrationButton"
+                        Content="新規登録"
+                        Style="{StaticResource PrimaryButtonStyle}"
+                        Width="90" Grid.Row="0" HorizontalAlignment="Right" Click="Registration_Click"/>
                 <ComboBox Grid.Row="1" x:Name="comboBox" SelectionChanged="ComboBox_SelectionChanged" Width="180" HorizontalAlignment="Left">
                     <ComboBoxItem Content="マスタ種類選択" IsEnabled="False"/>
                     <ComboBoxItem Content="品目マスタ＋項目設定マスタ" />

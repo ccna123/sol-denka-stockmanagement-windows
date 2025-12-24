@@ -181,8 +181,13 @@
                         HorizontalAlignment="Right"
                         VerticalAlignment="Bottom"
                         Margin="0,20,0,0">
-                        <Button Content="登録" Margin="10,0" Click="Register_Click"/>
-                        <Button Content="キャンセル" Click="Cancel_Click"/>
+                        <Button Content="登録"
+                                Margin="10,0"
+                                Style="{StaticResource PrimaryButtonStyle}"
+                                Click="Register_Click"/>
+                        <Button Content="キャンセル"
+                                Style="{StaticResource PrimaryButtonStyle}"
+                                Click="Cancel_Click"/>
                     </StackPanel>
                 </Grid>
             </Grid>

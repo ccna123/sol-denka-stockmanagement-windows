@@ -218,7 +218,8 @@
                 <StackPanel Grid.Row="2" HorizontalAlignment="Right" VerticalAlignment="Center">
                     <Button Content="転送実行" Width="120" Height="36"
                     HorizontalAlignment="Right"
-                    Background="#F5F5F5" BorderBrush="#B0B0B0" Click="Check_button"/>
+                            Style="{StaticResource PrimaryButtonStyle}"
+                   Click="Check_button"/>
                 </StackPanel>
             </Grid>
         </Grid>

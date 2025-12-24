@@ -42,8 +42,6 @@ new InventoryItem { Location_name="保管場所C", Item_number="10", Registratio
         };
 
             _totalPages = (int)Math.Ceiling(_allItems.Count / (double)_pageSize);
-            Style btnStyle = (Style)FindResource("ButtonStyle");
-            SearchButton.Style = btnStyle;
 
             UpdateList();
             CreatePageButtons();

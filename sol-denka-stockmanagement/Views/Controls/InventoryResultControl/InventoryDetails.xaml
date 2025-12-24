@@ -186,10 +186,33 @@
                 <StackPanel Margin="10">
                     <Border BorderThickness="1" BorderBrush="Gray" Margin="0,0,0,10" CornerRadius="5">
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" >
-                            <Button x:Name="BtnList1" Content="正常一致" Width="110" Margin="5" Click="List1_Click"/>
-                            <Button x:Name="BtnList2" Content="不足(未検出)" Width="110" Margin="5" Click="List2_Click"/>
-                            <Button x:Name="BtnList3" Content="余剰" Width="110" Margin="5" Click="List3_Click"/>
-                            <Button x:Name="BtnList4" Content="保管場所不一致" Width="130" Margin="5" Click="List4_Click"/>
+                            <ToggleButton x:Name="BtnList1"
+                                          Style="{StaticResource PrimaryToggleButtonStyle}"
+                                          Content="正常一致"
+                                          Width="110"
+                                          Margin="5"
+                                          Click="List1_Click" />
+
+                            <ToggleButton x:Name="BtnList2"
+                                          Style="{StaticResource PrimaryToggleButtonStyle}"
+                                          Content="不足(未検出)"
+                                          Width="110"
+                                          Margin="5"
+                                          Click="List2_Click" />
+
+                            <ToggleButton x:Name="BtnList3"
+                                          Style="{StaticResource PrimaryToggleButtonStyle}"
+                                          Content="余剰"
+                                          Width="110"
+                                          Margin="5"
+                                          Click="List3_Click" />
+
+                            <ToggleButton x:Name="BtnList4"
+                                          Style="{StaticResource PrimaryToggleButtonStyle}"
+                                          Content="保管場所不一致"
+                                          Width="130"
+                                          Margin="5"
+                                          Click="List4_Click" />
                         </StackPanel>
                     </Border>
 

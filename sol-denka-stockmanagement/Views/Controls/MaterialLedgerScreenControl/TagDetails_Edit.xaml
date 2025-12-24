@@ -190,7 +190,7 @@
                                 Width="80"
                                 Content="登録"
                                 FontSize="14"
-                                Background="White"
+                                Style="{StaticResource PrimaryButtonStyle}"
                                 HorizontalAlignment="Right"
                                 VerticalAlignment="Bottom"
                                 Click="Check_button"/>
@@ -202,8 +202,8 @@
                                 Width="90"
                                 Content="キャンセル"
                                 FontSize="14"
-                                Background="White"
                                 HorizontalAlignment="Right"
+                                Style="{StaticResource PrimaryButtonStyle}"
                                 VerticalAlignment="Bottom"
                                 Click="BackPage_Click"/>
                                 </Grid>

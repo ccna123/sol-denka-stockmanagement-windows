@@ -45,30 +45,29 @@ namespace sol_denka_stockmanagement.Views.Controls.InventoryResultControl
         };
 
 
-            SetButtonColor(BtnList1);
             MainList.ItemsSource = ListA;
         }
 
         private void List1_Click(object sender, RoutedEventArgs e)
         {
-            SetButtonColor(BtnList1);
+            SelectToggle(BtnList1);
             MainList.ItemsSource = ListA;
         }
         private void List2_Click(object sender, RoutedEventArgs e)
         {
-            SetButtonColor(BtnList2);
+            SelectToggle(BtnList2);
             MainList.ItemsSource = ListB;
         }
 
         private void List3_Click(object sender, RoutedEventArgs e)
         {
-            SetButtonColor(BtnList3);
+            SelectToggle(BtnList3);
             MainList.ItemsSource = ListC;
         }
 
         private void List4_Click(object sender, RoutedEventArgs e)
         {
-            SetButtonColor(BtnList4);
+            SelectToggle(BtnList4);
             MainList.ItemsSource = ListD;
         }
         private async void BackPage_Click(object sender, RoutedEventArgs e)
@@ -118,6 +117,17 @@ namespace sol_denka_stockmanagement.Views.Controls.InventoryResultControl
                 }
             }
         }
+
+        private void SelectToggle(System.Windows.Controls.Primitives.ToggleButton selected)
+        {
+            BtnList1.IsChecked = false;
+            BtnList2.IsChecked = false;
+            BtnList3.IsChecked = false;
+            BtnList4.IsChecked = false;
+
+            selected.IsChecked = true;
+        }
+
 
         private void SetButtonColor(System.Windows.Controls.Button selectedButton)
         {

@@ -25,10 +25,6 @@ namespace sol_denka_stockmanagement.Views.Controls.CsvImportScreenControl
             //_allItems = new List<CsvInputItem>();
 
             _totalPages = (int)Math.Ceiling(_allItems.Count / (double)_pageSize);
-            Style btnStyle = (Style)FindResource("ButtonStyle");
-            SearchButton.Style = btnStyle;
-            SearchButton2.Style = btnStyle;
-            SearchButton3.Style = btnStyle;
 
         }
 
@@ -70,10 +66,6 @@ namespace sol_denka_stockmanagement.Views.Controls.CsvImportScreenControl
             _totalPages = (int)Math.Ceiling(_allItems.Count / (double)_pageSize);
 
             // ボタンスタイル
-            Style btnStyle = (Style)FindResource("ButtonStyle");
-            SearchButton.Style = btnStyle;
-            SearchButton2.Style = btnStyle;
-            SearchButton3.Style = btnStyle;
 
             LoadCsvHistory();
 

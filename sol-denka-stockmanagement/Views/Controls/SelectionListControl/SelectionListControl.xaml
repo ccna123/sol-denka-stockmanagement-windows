@@ -62,20 +62,21 @@
                                                 <VisualStateGroup x:Name="SelectionStates">
                                                     <VisualState x:Name="Unselected">
                                                         <Storyboard>
-                                                            <ColorAnimation Storyboard.TargetName="BgBrush"
-                                                                            Storyboard.TargetProperty="Color"
+                                                            <ColorAnimation Storyboard.TargetName="Bd"
+                                                                            Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
                                                                             To="Transparent"
                                                                             Duration="0:0:0.12" />
                                                             <ThicknessAnimation Storyboard.TargetName="Bd"
                                                                                 Storyboard.TargetProperty="Margin"
-                                                                                To="0" />
+                                                                                To="0"
+                                                                                Duration="0:0:0.12" />
                                                         </Storyboard>
                                                     </VisualState>
 
                                                     <VisualState x:Name="Selected">
                                                         <Storyboard>
-                                                            <ColorAnimation Storyboard.TargetName="BgBrush"
-                                                                            Storyboard.TargetProperty="Color"
+                                                            <ColorAnimation Storyboard.TargetName="Bd"
+                                                                            Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
                                                                             To="#1A73E8"
                                                                             Duration="0:0:0.18" />
                                                             <ThicknessAnimation Storyboard.TargetName="Bd"
@@ -91,8 +92,8 @@
                                                     <VisualState x:Name="Normal" />
                                                     <VisualState x:Name="MouseOver">
                                                         <Storyboard>
-                                                            <ColorAnimation Storyboard.TargetName="BgBrush"
-                                                                            Storyboard.TargetProperty="Color"
+                                                            <ColorAnimation Storyboard.TargetName="Bd"
+                                                                            Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
                                                                             To="#E6E6E6"
                                                                             Duration="0:0:0.12" />
                                                         </Storyboard>

@@ -33,8 +33,6 @@ namespace sol_denka_stockmanagement.Views.Controls.MaterialLedgerScreenControl
             LoadLedgerItems();
 
             _totalPages = (int)Math.Ceiling(_allItems.Count / (double)_pageSize);
-            Style btnStyle = (Style)FindResource("ButtonStyle");
-            SearchButton.Style = btnStyle;
 
             UpdateList();
             CreatePageButtons();
