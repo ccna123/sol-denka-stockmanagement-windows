@@ -39,13 +39,14 @@
                 </Border>
 
                 <!-- タブ部分 -->
-                <TabControl Grid.Row="1" Margin="0,20,0,20" SelectionChanged="TabControl_SelectionChanged">
+                <TabControl Grid.Row="1" ItemContainerStyle="{StaticResource PrimaryTabItemStyle}" Margin="0,20,0,20" SelectionChanged="TabControl_SelectionChanged">
                     <!-- ▼ ダウンロードタブ -->
-                    <TabItem Header="ダウンロード（Android → Windows）" Style="{StaticResource PrimaryTabItemStyle}">
+                    <TabItem Header="ダウンロード（Android → Windows）"
+                             >
                         <Grid Margin="20">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="*"/>
                             </Grid.RowDefinitions>
                             <StackPanel Grid.Row="0">
                                 <!-- 転送方式 -->
@@ -128,11 +129,11 @@
 
                     <!-- ▼ アップロードタブ -->
                     <TabItem Header="アップロード（Windows → Android）"
-                             Style="{StaticResource PrimaryTabItemStyle}">
+                             >
                         <Grid Margin="20">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="*"/>
                             </Grid.RowDefinitions>
                             <StackPanel Grid.Row="0">
                                 <!-- 転送方式 -->
