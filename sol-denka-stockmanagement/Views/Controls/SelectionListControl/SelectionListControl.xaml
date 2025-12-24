@@ -49,12 +49,9 @@
                                         <Grid>
                                             <Border x:Name="Bd"
                                                     CornerRadius="10"
+                                                    Background="{TemplateBinding Background}"
                                                     Padding="{TemplateBinding Padding}"
                                                     Margin="0">
-                                                <Border.Background>
-                                                    <SolidColorBrush x:Name="BgBrush"
-                                                                     Color="Transparent" />
-                                                </Border.Background>
                                                 <ContentPresenter VerticalAlignment="Center" />
                                             </Border>
 
@@ -110,14 +107,36 @@
                             <Style.Triggers>
                                 <Trigger Property="IsSelected"
                                          Value="True">
+                                    <Setter Property="Background"
+                                            Value="#1A73E8" />
                                     <Setter Property="Foreground"
                                             Value="White" />
                                 </Trigger>
-                                <Trigger Property="IsSelected"
-                                         Value="False">
+                                <MultiTrigger>
+                                    <MultiTrigger.Conditions>
+                                        <Condition Property="IsMouseOver"
+                                                   Value="True" />
+                                        <Condition Property="IsSelected"
+                                                   Value="False" />
+                                    </MultiTrigger.Conditions>
+                                    <Setter Property="Background"
+                                            Value="#E6E6E6" />
                                     <Setter Property="Foreground"
                                             Value="Black" />
-                                </Trigger>
+                                </MultiTrigger>
+                                <MultiTrigger>
+                                    <MultiTrigger.Conditions>
+                                        <Condition Property="IsMouseOver"
+                                                   Value="False" />
+                                        <Condition Property="IsSelected"
+                                                   Value="False" />
+                                    </MultiTrigger.Conditions>
+                                    <Setter Property="Background"
+                                            Value="Transparent" />
+                                    <Setter Property="Foreground"
+                                            Value="Black" />
+                                </MultiTrigger>
+
                             </Style.Triggers>
                         </Style>
                     </ListBox.ItemContainerStyle>

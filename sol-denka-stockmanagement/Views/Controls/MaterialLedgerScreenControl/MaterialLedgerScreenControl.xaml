@@ -137,20 +137,8 @@
                     HorizontalAlignment="Left"
                     VerticalAlignment="Stretch"
                     Padding="10,5"
-                    Click="OpenSearchDialogButton_Click">
-                    <Button.Template>
-                        <ControlTemplate TargetType="Button">
-                            <Border 
-                                Background="{TemplateBinding Background}" 
-                                BorderBrush="{TemplateBinding BorderBrush}" 
-                                BorderThickness="{TemplateBinding BorderThickness}" 
-                                CornerRadius="5">
-                                <ContentPresenter 
-                                    HorizontalAlignment="Center" 
-                                    VerticalAlignment="Center" />
-                            </Border>
-                        </ControlTemplate>
-                    </Button.Template>
+                        Style="{StaticResource PrimaryButtonStyle}"
+                        Click="OpenSearchDialogButton_Click">
                 </Button>
                 
                 <StackPanel Orientation="Horizontal" Margin="10">
